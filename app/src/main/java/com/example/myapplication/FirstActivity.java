@@ -5,16 +5,24 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CompoundButton;
 import android.widget.EditText;
+import android.widget.Switch;
+import android.widget.TextView;
+import android.widget.ToggleButton;
 
 public class FirstActivity extends AppCompatActivity implements View.OnClickListener {
 
     private EditText edtName;
     private Button btnGoNext;
-
+    public static final String KEY_NAME ="name";
+    private ToggleButton toggleButtn;
+    private Switch sqRememberMe;
+    private TextView txtChangeColor;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,6 +33,45 @@ public class FirstActivity extends AppCompatActivity implements View.OnClickList
         btnGoNext = findViewById(R.id.btnNext);
 
         btnGoNext.setOnClickListener(this);
+
+        toggleButtn = findViewById(R.id.toggleButton);
+        toggleButtn.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+
+                if(b){
+                    txtChangeColor.setBackgroundColor(Color.YELLOW);
+                    txtChangeColor.setTextColor(Color.BLUE);
+                }
+                else
+                {
+                    txtChangeColor.setBackgroundColor(Color.BLACK);
+                    txtChangeColor.setTextColor(Color.RED);
+                }
+
+
+            }
+
+        });
+
+        sqRememberMe.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+
+                if(b){
+                    txtChangeColor.setBackgroundColor(Color.YELLOW);
+                    txtChangeColor.setTextColor(Color.BLUE);
+                }
+                else
+                {
+                    txtChangeColor.setBackgroundColor(Color.BLACK);
+                    txtChangeColor.setTextColor(Color.RED);
+                }
+
+
+            }
+
+        });
 
     }
 
@@ -58,4 +105,8 @@ public class FirstActivity extends AppCompatActivity implements View.OnClickList
         AlertDialog mAlertDialog = alertDialogBuilder.create();
         mAlertDialog.show();
     }
+
+
+
+
 }
